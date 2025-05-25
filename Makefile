@@ -5,7 +5,29 @@ all: release
 release: 
 	if [ ! -e release ]; then make update_release; fi
 
+publish: release
+	@for file in release/*.ttl release/woewoe-links.html; do \
+		if [ -e $$file ]; then \
+			if [ ! -e docs ]; then mkdir docs; fi;\
+			tgt=docs/`basename $$file`;\
+			if [ -e $$tgt ]; then \
+				echo error: file $$tgt found, please remove manually 1>&2;\
+				exit 1;\
+			fi;\
+			cp $$file $$tgt;\
+			git add $$tgt; \
+			echo "git commit "$$tgt 1>&2;\
+			git commit -a -m "publish "`basename $$tgt`;\
+			echo "git push "$$tgt 1>&2;\
+			git push;\
+		fi;\
+	done;
+
 update_release: 
+	@echo make update_release will update the release/ directory. 1>&2
+	@echo "for publishing your data online, don't forget to run make publish" 1>&2;
+	@echo 1>&2;
+
 	@if [ ! -e release ]; then \
 		mkdir release; \
 	 else \
