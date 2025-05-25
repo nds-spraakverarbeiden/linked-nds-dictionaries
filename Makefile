@@ -27,15 +27,15 @@ publish: release
 	 for file in woewoe-rdf/rdf-data/*.ttl; do \
 	 	echo $$file '>>' $$tgt 1>&2;\
 		cat $$file;\
-		echo;
-		echo;
+		echo;\
+		echo;\
 	 done \
 	 > $$tgt;\
 	 git add $$tgt;\
 	 echo "git commit "$$tgt 1>&2;\
 	 git commit -a -m "publish "`basename $$tgt`;\
 	 echo "git push "$$tgt 1>&2;\
-	git push;\
+	 git push;
 
 update_release: 
 	@echo make update_release will update the release/ directory. 1>&2
