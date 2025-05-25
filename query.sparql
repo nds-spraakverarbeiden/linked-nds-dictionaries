@@ -1,0 +1,88 @@
+PREFIX vartrans: <http://www.w3.org/ns/lemon/vartrans#>
+PREFIX ontolex: <http://www.w3.org/ns/lemon/ontolex#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+SELECT ?woewoe ?gloss ?plattmakers ?reuter ?wwb ?pdt ?twents
+WHERE {
+	?le_woewoe a ontolex:LexicalEntry.
+	FILTER(contains(str(?le_woewoe),"example.org"))
+	?le_woewoe ontolex:canonicalForm/ontolex:writtenRep ?woewoe_form.
+	BIND(concat(?woewoe_form," <",str(?le_woewoe),">") as ?woewoe)
+	
+	OPTIONAL
+	{ SELECT ?le_woewoe (GROUP_CONCAT(DISTINCT ?translation; separator="; ") as ?gloss)
+	  WHERE {
+	    ?le_woewoe ontolex:sense ?se_woewoe.
+	  	[] vartrans:target ?se_woewoe;
+	  	   vartrans:source ?se_de.
+	  	?le_de ontolex:sense ?se_de;
+	  	       ontolex:canonicalForm/ontolex:writtenRep ?raw_translation.
+	  	 FILTER(lang(?raw_translation)='de')
+	  	 BIND(str(?raw_translation) as ?translation)
+	  } GROUP BY ?le_woewoe
+	}
+
+
+	OPTIONAL { 
+		SELECT ?le_woewoe (GROUP_CONCAT(?entry; separator=" ") as ?pdt)
+		WHERE {
+			[] 	vartrans:relates ?le_woewoe;
+				vartrans:relates ?le_other;
+				rdf:value ?y.
+			FILTER(contains(str(?le_other),"plautdietsch"))
+			?le_other ontolex:canonicalForm/ontolex:writtenRep ?c.
+			BIND(concat('"',?c,'"@',lang(?c)," [",str(?y),"] <",str(?le_other),">") as ?entry)
+		} GROUP BY ?le_woewoe 
+	}
+
+	OPTIONAL { 
+		SELECT ?le_woewoe (GROUP_CONCAT(?entry; separator=" ") as ?plattmakers)
+		WHERE {
+			[] 	vartrans:relates ?le_woewoe;
+				vartrans:relates ?le_other;
+				rdf:value ?y.
+			FILTER(contains(str(?le_other),"plattmakers"))
+			?le_other ontolex:canonicalForm/ontolex:writtenRep ?c.
+			BIND(concat('"',?c,'"@',lang(?c)," [",str(?y),"] <",str(?le_other),">") as ?entry)
+		} GROUP BY ?le_woewoe 
+	}
+
+	OPTIONAL { 
+		SELECT ?le_woewoe (GROUP_CONCAT(?entry; separator=" ") as ?reuter)
+		WHERE {
+			[] 	vartrans:relates ?le_woewoe;
+				vartrans:relates ?le_other;
+				rdf:value ?y.
+			FILTER(contains(str(?le_other),"/dwn/"))
+			?le_other ontolex:canonicalForm/ontolex:writtenRep ?c.
+			BIND(concat('"',?c,'"@',lang(?c)," [",str(?y),"] <",str(?le_other),">") as ?entry)
+		} GROUP BY ?le_woewoe 
+	}
+
+	OPTIONAL 
+	{ 
+		SELECT ?le_woewoe (GROUP_CONCAT(?entry; separator=" ") as ?twents)
+		WHERE {
+			[] 	vartrans:relates ?le_woewoe;
+				vartrans:relates ?le_other;
+				rdf:value ?y.
+			FILTER(contains(str(?le_other),"twentswoordenboek"))
+			?le_other ontolex:canonicalForm/ontolex:writtenRep ?c.
+			BIND(concat('"',?c,'"@',lang(?c)," [",str(?y),"] <",str(?le_other),">") as ?entry)
+		} GROUP BY ?le_woewoe 
+	}
+		
+	OPTIONAL 
+	{ 
+		SELECT ?le_woewoe (GROUP_CONCAT(?entry; separator=" ") as ?wwb)
+		WHERE {
+			[] 	vartrans:relates ?le_woewoe;
+				vartrans:relates ?le_other;
+				rdf:value ?y.
+			FILTER(contains(str(?le_other),"woerterbuchnetz.de/"))
+			?le_other ontolex:canonicalForm/ontolex:writtenRep ?c.
+			BIND(concat('"',?c,'"@',lang(?c)," [",str(?y),"] <",str(?le_other),">") as ?entry)
+		} GROUP BY ?le_woewoe 
+	}
+
+	FILTER(BOUND(?plattmakers) || BOUND(?pdt) || BOUND(?reuter) || BOUND(?twents) || BOUND(?wwb))
+} ORDER BY ?woewoe ?le_woewoe
