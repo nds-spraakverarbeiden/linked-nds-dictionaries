@@ -9,8 +9,9 @@ refresh:
 	@cd ../woewoe-norm; make;
 	@make all
 
-plattmakers2woewoe.tsv: plattmakers.tsv plattmakers2norm.a plattmakers2woewoe.a
+plattmakers2woewoe.tsv: 
 	@if [ ! -e plattmakers2woewoe.tsv ]; then \
+		make plattmakers.tsv plattmakers2norm.a plattmakers2woewoe.a;\
 		echo plattmakers.tsv '>'  plattmakers2woewoe.tsv 1>&2;\
 		cat plattmakers.tsv \
 		| python3 ../fst4conll.py plattmakers2woewoe.a \
@@ -71,8 +72,9 @@ update_html:
 		) || echo error: issue with https://plattmakers.de/de/abc/$$l1 1>&2; \
 	done;\
 
-plattmakers.jsonl: html
+plattmakers.jsonl: 
 	@if [ ! -e plattmakers.jsonl ]; then \
+		make html;\
 		for dir in html/*/; do \
 			for file in $$dir/*.html; do \
 				(\
