@@ -6,15 +6,6 @@ DWN dictionaries are (implicitly) copyrighted, but this one is a re-edition of a
 
 In principle, we can provide the same level of linking for all DWN dictionaries, this includes a dictionary for Mecklenburgian-Western Pomeranian.
 
-## Build process
-
-reuter2woewoe.tsv
-	<- reuter2norm.a
-	<- reuter2woewoe.a
-	<- reuter.tsv
-		<- reuter.jsonl
-			<- html
-
 ## Known issues
 
 We do not support `make refresh` because it is likely to time out. We ran it on an adequately-sized server.
