@@ -1,4 +1,4 @@
-@prefix : <http://example.org/lexicon#> .
+@prefix : <https://nds-spraakverarbeiden.github.io/linked-nds-dictionaries/woewoe.ttl#> .
 @prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
 @prefix lime: <http://www.w3.org/ns/lemon/lime#> .
 @prefix lexicog: <http://www.w3.org/ns/lemon/lexicog#> .

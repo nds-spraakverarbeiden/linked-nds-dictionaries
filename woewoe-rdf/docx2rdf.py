@@ -250,7 +250,7 @@ if True: # just for indentation
     woewoe_table = pd.concat(sheets, ignore_index=True)
 
     # Namespaces für Turtle
-    BASE_NAMESPACE = "http://example.org/lexicon#"
+    BASE_NAMESPACE = "https://nds-spraakverarbeiden.github.io/linked-nds-dictionaries/woewoe.ttl#"
     ONTOLEX_NAMESPACE = "http://www.w3.org/ns/lemon/ontolex#"
     LIME_NAMESPACE = "http://www.w3.org/ns/lemon/lime#"
     LEXICOG_NAMESPACE = "http://www.w3.org/ns/lemon/lexicog#"
@@ -314,7 +314,7 @@ if True: # just for indentation
     # #### 4.2 Sublemmata -> LexicalEntries
 
     # Namespaces für Turtle
-    BASE_NAMESPACE = "http://example.org/lexicon#"
+    BASE_NAMESPACE = "https://nds-spraakverarbeiden.github.io/linked-nds-dictionaries/woewoe.ttl#"
     ONTOLEX_NAMESPACE = "http://www.w3.org/ns/lemon/ontolex#"
     LIME_NAMESPACE = "http://www.w3.org/ns/lemon/lime#"
     NEUBER_NAMESPACE = "http://example.org/neuber#"
@@ -358,7 +358,7 @@ if True: # just for indentation
     sys.stderr.flush()
 
     # Namespaces für Turtle
-    BASE_NAMESPACE = "http://example.org/lexicon#"
+    BASE_NAMESPACE = "https://nds-spraakverarbeiden.github.io/linked-nds-dictionaries/woewoe.ttl#"
     ONTOLEX_NAMESPACE = "http://www.w3.org/ns/lemon/ontolex#"
     LIME_NAMESPACE = "http://www.w3.org/ns/lemon/lime#"
     NEUBER_NAMESPACE = "http://example.org/neuber#"
@@ -420,7 +420,7 @@ if True: # just for indentation
     #de_path = 'woewoe_de_rdf.ttl'
 
     # Namespaces für Turtle
-    BASE_NAMESPACE = "http://example.org/lexicon#"
+    BASE_NAMESPACE = "https://nds-spraakverarbeiden.github.io/linked-nds-dictionaries/woewoe.ttl#"
     ONTOLEX_NAMESPACE = "http://www.w3.org/ns/lemon/ontolex#"
     LIME_NAMESPACE = "http://www.w3.org/ns/lemon/lime#"
     NEUBER_NAMESPACE = "http://example.org/neuber#"
