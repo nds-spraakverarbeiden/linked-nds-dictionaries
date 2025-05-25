@@ -92,6 +92,10 @@ update_release:
 	#echo release/woewoe-links.html '>' release/woewoe-links.md 1>&2;\
 	#pandoc release/woewoe-links.html -t markdown > release/woewoe-links.md;
 
+	@# Note: even though we process and convert Twents data, this has been excluded from the release because of URL instability;\
+	 #       to re-enable Twents linking, update query.sparql, delete release/ and run make release
+
+
 src: 
 	@for dir in woewoe-rdf woewoe-norm woerterbuchnetz plattmakers reuter twents plautdietsch; do \
 		echo make $$dir 1>&2;\

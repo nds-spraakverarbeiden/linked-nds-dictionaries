@@ -1,7 +1,10 @@
 PREFIX vartrans: <http://www.w3.org/ns/lemon/vartrans#>
 PREFIX ontolex: <http://www.w3.org/ns/lemon/ontolex#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-SELECT ?woewoe ?gloss ?plattmakers ?reuter ?wwb ?pdt ?twents
+
+SELECT ?woewoe ?gloss ?plattmakers ?reuter ?wwb ?pdt
+# with Twents: 
+# SELECT ?woewoe ?gloss ?plattmakers ?reuter ?wwb ?pdt ?twents
 WHERE {
 	?le_woewoe a ontolex:LexicalEntry.
 	FILTER(contains(str(?le_woewoe),"example.org"))
@@ -83,6 +86,9 @@ WHERE {
 			BIND(concat('"',?c,'"@',lang(?c)," [",str(?y),"] <",str(?le_other),">") as ?entry)
 		} GROUP BY ?le_woewoe 
 	}
+	
+	FILTER(BOUND(?plattmakers) || BOUND(?pdt) || BOUND(?reuter) || BOUND(?wwb))
 
-	FILTER(BOUND(?plattmakers) || BOUND(?pdt) || BOUND(?reuter) || BOUND(?twents) || BOUND(?wwb))
+	# with Twents:
+	# FILTER(BOUND(?plattmakers) || BOUND(?pdt) || BOUND(?reuter) || BOUND(?twents) || BOUND(?wwb))
 } ORDER BY ?woewoe ?le_woewoe
