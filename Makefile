@@ -23,7 +23,7 @@ publish: release
 		fi;\
 	done;
 
-	@tgt=release/woewoe.ttl;\
+	@tgt=docs/woewoe.ttl;\
 	 for file in woewoe-rdf/rdf-data/*.ttl; do \
 	 	echo $$file '>>' $$tgt 1>&2;\
 		cat $$file;\
