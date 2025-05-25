@@ -1,0 +1,27 @@
+PREFIX : <http://example.org/lexicon#> 
+PREFIX ontolex: <http://www.w3.org/ns/lemon/ontolex#> 
+PREFIX lime: <http://www.w3.org/ns/lemon/lime#> 
+PREFIX vartrans: <http://www.w3.org/ns/lemon/vartrans#> 
+PREFIX apf: <http://jena.apache.org/ARQ/property#>
+
+SELECT ?part ?cf ?url 
+WHERE {
+	?url a ontolex:LexicalEntry.
+	{ SELECT ?part ?cf ?url
+	  WHERE { 
+			?url ontolex:canonicalForm/ontolex:writtenRep ?cf.
+			BIND(replace(?cf,"[(][^)]*[)]","") as ?simple)
+			?part apf:strSplit ( ?simple "[| ]" ) .
+	  } GROUP BY ?cf ?url ?part ORDER BY DESC(strlen(?part))
+	}
+	FILTER(NOT exists { 
+		{ SELECT ?part2 ?cf ?url
+		  WHERE { 
+				?url ontolex:canonicalForm/ontolex:writtenRep ?cf.
+				BIND(replace(?cf,"[(][^)]*[)]","") as ?simple)
+				?part2 apf:strSplit ( ?simple "[| ]" ) .
+		  } GROUP BY ?cf ?url ?part2 ORDER BY DESC(strlen(?part))
+		 }
+		 FILTER(strlen(?part2)>strlen(?part))
+	})
+} ORDER BY ?cf
