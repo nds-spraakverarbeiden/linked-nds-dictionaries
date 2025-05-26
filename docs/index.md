@@ -1,38 +1,45 @@
 # Linked Low German dictionaries: RDF conversion and linking of Low German dictionaries
 
-Low German (Low Saxon) online dictionaries as a linked lexical knowledge graph in OntoLex/RDF.
-This has a practical motivation, to produce a machine- and human-readable multidialectal dictionary. At the moment, all existing dictionaries for Low German take an emphasized regional focus.
+With this repository, we provide a set of cross-dialectally linked Low German (Low Saxon) online dictionaries as a linked lexical knowledge graph in OntoLex/RDF.
+This has a practical motivation, to provide a machine- and human-readable multidialectal dictionary, and serve as a "digital Rosetta stone" that unifies lexical materials from different dialects through linking dictionaries and mapping corresponding words without the need for a standard variety.
 
 Licence to be confirmed.
 
-When using, referring to or reporting this data, please cite ...
+When using, referring to or reporting this data, please cite
 
-## TLDR
+<table>
+	<tr><td>
+Christian Chiarcos and Tabea Gröger and Christian Fäth (2025), Putting Low German on the Map (of Linguistic Linked Open Data), in Proceedings of the 5th Conference on Language, Data and Knowledge (LDK-2025), 2025, Sep 9-11, Naples, Italy.
+</td></tr>
+</table>
 
-Build `release/` with `make`, resp. `make update_release`. See [`release` directory](release/).
-As a result, `release/` will contain RDF/TTL files and an HTML visualization of their interlinking.
+## Background
 
-## Idea
+Low German (Low Saxon, ISO 639-2 `nds`) is a regional language protected under the European Charter for Regional or Minority Languages (ECRML), spoken primarily in Northern Germany and in the Western Netherlands, closely related to High German, Dutch and Frisian. During the Middle Ages, it has been a lingua franca around the Baltic Sea, expanded widely into areas with formerly Slavic, Danish or Frisian language, and it had a strong and lasting impact on modern Scandinavian languages. However, after the 16th c., it has been gradually replaced as a language of administration and literature by the emerging national languages, and fragmented into various dialects. Without a written standard and without a prestige variety to adhere to, existing language resources (mostly literature and dictionaries) currently take strongly regional focus.
 
-- convert a dictionary of North Low Saxon (WöWö) to OntoLex/RDF
-- link it with selected online dictionaries for Low German
-	- because most of these are (explitly or implicitly) copyrighted, we only provide RDF indices *for WöWö lemmas*, i.e., only forms (and URLs) that have been linked with WöWö
-	- lemmas in external dictionaries are identified by their *real URL*, to they do not resolve to RDF data, but to HTML.
-- as linking cannot use the actual dictionaries, we only link by formal criteria
-	- use FSTs to normalize against a selected variety with apocope and without diphthongization (here: North Markian)
-	- This is a historical artifact, because the conversion was done in the context of a project on North Markian
-- export as lexical knowledge graph in OntoLex (RDF)
-- provide an HTML visualization for interactive inspection
+Aside from representing hurdles in the promotion and use of the language in the digital sphere, on the book market or with respect to the creation of didactic materials, this also represents a limiting factor for the development of NLP technologies, which -- to this day --, practically do not exist for Low German.
 
-Details are described in the accompanying paper.
+Due to the lack of training data, the cross-dialectal linking provided here is done automatically and on formal grounds only. It may thus contain errors. Our approach also provides a confidence score, where higher scores indicate greater confidence. For technical details, see the accompanying paper.
 
-> Note: Even though we process and convert Twents data, this has been excluded from the HTML release because of URL instability. It is still maintained in the knowledge graph as `release/twents-links.ttl`, but its URLs will point to the wrong lemma. 
+## Content
 
-To generate an up-to-date version of Twents data:
+We provide an excerpt from WöWö (Low German lemmas and German translations). For reasons of copyright, no other information from other dictionaries has been used or is provided except for the lookup URL and the lemma form.
 
-- crawl and build from scratch: `cd twents; make refresh`
-- update `query.sparql` (seach for "Twents")
-- delete `release/`
-- run `make release`.
-
-You can `make refresh` on the other dictionaries.
+- (human-readable) [HTML visualization](https://nds-spraakverarbeiden.github.io/linked-nds-dictionaries/woewoe-links.html)
+	- lemmas and glosses from [WöWö dictionary (Wöörner Wöör)](https://ditschiplatt.de/woehrner-woeoer/) (North Low Saxon, Dithmarschen)
+	- automated linking with
+		- [Fritz Reuter dictionary at DWN](https://www.niederdeutsche-literatur.de/dwn/index-frw.php) (East Low German, Mecklenburgian)
+		- [Plattmakers dictionary](https://plattmakers.de/) (North Low Saxon, North Hanoveranian) 
+		- [Westfälisches Wörterbuch](https://www.mundart-kommission.lwl.org/de/forschung/westfaelisches-woerterbuch/), hosted at the [Trier Wörterbuchnetz](https://www.woerterbuchnetz.de/WWB) (Westphalian)
+		- [Plautdietsch dictionary](https://ereimer.net/plautdietsch/pddefns.htm) (Mennonite Low German)
+		- linking with the Twents dialecticon has been removed from HTML because they do not provide stable URLs.
+- (machine-readable) lexical knowledge graph in RDF/Turtle, using the OntoLex vocabulary
+	- [WöWö excerpt](https://nds-spraakverarbeiden.github.io/linked-nds-dictionaries/woewoe.ttl) (lemma and German translation)
+	- Links/RDF indices for
+		- [Fritz Reuter dictionary](https://nds-spraakverarbeiden.github.io/linked-nds-dictionaries/reuter-links.ttl) (Mecklenburgian)
+		- [Plattmakers dictionary](https://nds-spraakverarbeiden.github.io/linked-nds-dictionaries/plattmakers-links.ttl) (North Low Saxon, North Hanoveranian)
+		- [Westfälisches Wörterbuch](https://nds-spraakverarbeiden.github.io/linked-nds-dictionaries/wwb-links.ttl) (Westphalian from Germany)
+		- [Plautdietsch dictionary](https://nds-spraakverarbeiden.github.io/linked-nds-dictionaries/pdt-links.ttl) by Herman Rempel (1984-1995), the Mennonite Literary Society (1984-1995), mennolink.org (1998-2006), and Eugene Reimer (2006-2007) (Mennonite Low German, emmigrant variety of East Low German)
+		- [Twents dialecticon](https://nds-spraakverarbeiden.github.io/linked-nds-dictionaries/twents-links.ttl) (Westphalian from the Netherlands)
+			- **warning**: As observed in May 2025, the original Twents dialecticon URLs have been changed since this file was created, so that most lemmas will not resolve correctly. Use at your own risk.
+	- [complete dump](https://nds-spraakverarbeiden.github.io/linked-nds-dictionaries/all.ttl) (except Twents)

@@ -37,6 +37,22 @@ publish: release
 	 echo "git push "$$tgt 1>&2;\
 	 git push;
 
+	@tgt=docs/all.ttl;\
+	 for file in docs/*ttl; do \
+	 	if echo $$file | grep -v twents-links >&/dev/null; then \
+		 	echo $$file '>>' $$tgt 1>&2;\
+		 	echo '# '$$file;\
+		 	echo;\
+		 	cat $$file;\
+		 	echo;\
+		 fi;\
+	 done\
+	 > $$tgt;\
+	 echo "git commit "$$tgt 1>&2;\
+	 git commit -a -m "publish "`basename $$tgt`;\
+	 echo "git push "$$tgt 1>&2;\
+	 git push;
+
 update_release: 
 	@echo make update_release will update the release/ directory. 1>&2
 	@echo "for publishing your data online, don't forget to run make publish" 1>&2;
