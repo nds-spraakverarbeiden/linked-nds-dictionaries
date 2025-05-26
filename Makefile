@@ -48,6 +48,7 @@ publish: release
 		 fi;\
 	 done\
 	 > $$tgt;\
+	 git add $$tgt;\
 	 echo "git commit "$$tgt 1>&2;\
 	 git commit -a -m "publish "`basename $$tgt`;\
 	 echo "git push "$$tgt 1>&2;\
