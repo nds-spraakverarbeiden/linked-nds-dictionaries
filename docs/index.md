@@ -25,7 +25,7 @@ Due to the lack of training data, the cross-dialectal linking provided here is d
 
 We provide an excerpt from WöWö (Low German lemmas and German translations). For reasons of copyright, no other information from other dictionaries has been used or is provided except for the lookup URL and the lemma form.
 
-- **(human-readable) [HTML visualization](https://nds-spraakverarbeiden.github.io/linked-nds-dictionaries/woewoe-links.html)**
+- **(human-readable) [HTML visualization](woewoe-links.html)**
 	- lemmas and glosses from [WöWö dictionary (Wöörner Wöör)](https://ditschiplatt.de/woehrner-woeoer/) (North Low Saxon, Dithmarschen)
 	- automated linking with
 		- [Fritz Reuter dictionary at DWN](https://www.niederdeutsche-literatur.de/dwn/index-frw.php) (East Low German, Mecklenburgian)
@@ -34,15 +34,15 @@ We provide an excerpt from WöWö (Low German lemmas and German translations). F
 		- [Plautdietsch dictionary](https://ereimer.net/plautdietsch/pddefns.htm) (Mennonite Low German)
 		- linking with the Twents dialecticon has been removed from HTML because they do not provide stable URLs.
 - **(machine-readable) lexical knowledge graph** in RDF/Turtle, using the OntoLex vocabulary
-	- [WöWö excerpt (RDF)](https://nds-spraakverarbeiden.github.io/linked-nds-dictionaries/woewoe.ttl) (lemma and German translation)
+	- [WöWö excerpt (RDF)](woewoe.ttl) (lemma and German translation)
 	- Links for
-		- [Fritz Reuter dictionary (RDF index file)](https://nds-spraakverarbeiden.github.io/linked-nds-dictionaries/reuter-links.ttl) (Mecklenburgian)
-		- [Plattmakers dictionary (RDF index file)](https://nds-spraakverarbeiden.github.io/linked-nds-dictionaries/plattmakers-links.ttl) (North Low Saxon, North Hanoveranian)
-		- [Westfälisches Wörterbuch (RDF index file)](https://nds-spraakverarbeiden.github.io/linked-nds-dictionaries/wwb-links.ttl) (Westphalian from Germany)
-		- [Plautdietsch dictionary (RDF index file)](https://nds-spraakverarbeiden.github.io/linked-nds-dictionaries/pdt-links.ttl) by Herman Rempel (1984-1995), the Mennonite Literary Society (1984-1995), mennolink.org (1998-2006), and Eugene Reimer (2006-2007) (Mennonite Low German, emmigrant variety of East Low German)
-		- [Twents dialecticon (RDF index file)](https://nds-spraakverarbeiden.github.io/linked-nds-dictionaries/twents-links.ttl) (Westphalian from the Netherlands)
+		- [Fritz Reuter dictionary (RDF index file)](reuter-links.ttl) (Mecklenburgian)
+		- [Plattmakers dictionary (RDF index file)](plattmakers-links.ttl) (North Low Saxon, North Hanoveranian)
+		- [Westfälisches Wörterbuch (RDF index file)](wwb-links.ttl) (Westphalian from Germany)
+		- [Plautdietsch dictionary (RDF index file)](pdt-links.ttl) by Herman Rempel (1984-1995), the Mennonite Literary Society (1984-1995), mennolink.org (1998-2006), and Eugene Reimer (2006-2007) (Mennonite Low German, emmigrant variety of East Low German)
+		- [Twents dialecticon (RDF index file)](twents-links.ttl) (Westphalian from the Netherlands)
 			- **warning**: As observed in May 2025, the original Twents dialecticon URLs have been changed since this file was created, so that most lemmas will not resolve correctly. Use at your own risk.
-	- [complete dump](https://nds-spraakverarbeiden.github.io/linked-nds-dictionaries/all.ttl) (except Twents)
+	- [complete dump](all.ttl) (except Twents)
 - **developer resources at [GitHub](https://github.com/nds-spraakverarbeiden/linked-nds-dictionaries), incl.
 	- build scripts for WöWö excerpt (DOCX -> OntoLex)
 	- SFST scripts for normalization (against North Markian) and WöWö linking
