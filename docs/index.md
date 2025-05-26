@@ -48,3 +48,31 @@ We provide an excerpt from WöWö (Low German lemmas and German translations). F
 	- SFST scripts for normalization (against North Markian) and WöWö linking
 	- OntoLex conversion for linked external dictionaries (lemmas and lemma URLs, only)
 	- querying and pruning routine for generating HTML (OntoLex -> HTML)
+
+## Data Modelling
+
+We provide our full data as a lexical knowledge graph in RDF/Turtle, using the OntoLex vocabulary.
+
+The core of our dataset is an excerpt from the Wöörner Wöör by Peter Neuber, originally provided as "Frie Woor" in DOCX. The source files have a very elaborate semantic markup, which guided our extraction, but could only partially be replicated in RDF (see Fig. 1).
+
+| <img src="img/woewoe-excerpt.png" alt="WöWö excerpt" width="500"/> |
+| --------------------------- |
+| Fig. 1. Excerpt from WöWö dictionary, DOCX format |
+
+The OntoLex modelling is illustrated in Fig. 2.
+
+| <img src="img/aal-ool.png" alt="Aal - Ool from WöWö" width="500"/> |
+| --------------------------- |
+| Fig. 2. OntoLex-Vartrans links between Low German *Ool* and High German *Aal* "eel" |
+
+The linking with an external dictionary (here, the Twents dialecticon), is illustrated in Fig. 3.
+
+| <img src="img/ool-translations.png" alt="Ool links with Twents dialecticon" width="500"/> |
+| --------------------------- |
+| Fig. 3. Linking with Twents |
+
+
+
+
+aal-ool.png  ool-translations.png  
+
