@@ -38,7 +38,7 @@ As a result, `release/` will contain RDF/TTL files and an HTML visualization of 
 - export as lexical knowledge graph in OntoLex (RDF)
 - provide an HTML visualization for interactive inspection
 
-Details are described in the accompanying paper.
+Details are described in the accompanying papers.
 
 > Note: Even though we process and convert Twents data, this has been excluded from the HTML release because of URL instability. It is still maintained in the knowledge graph as `release/twents-links.ttl`, but its URLs will point to the wrong lemma. 
 
