@@ -5,13 +5,19 @@ This has a practical motivation, to produce a machine- and human-readable multid
 
 Licence to be confirmed.
 
-When using, referring to or reporting this data, please cite 
+**For reference, please cite** the following papers:
 
 <table>
 	<tr><td>
-Christian Chiarcos and Tabea Gröger and Christian Fäth (2025), Putting Low German on the Map (of Linguistic Linked Open Data), in Proceedings of the 5th Conference on Language, Data and Knowledge (LDK-2025), 2025, Sep 9-11, Naples, Italy.
+(1) Christian Chiarcos and Tabea Gröger and Christian Fäth (2025a), Putting Low German on the Map (of Linguistic Linked Open Data), in Proceedings of the 5th Conference on Language, Data and Knowledge (LDK-2025), 2025, Sep 9-11, Naples, Italy.
 </td></tr>
+	<tr><td>
+(2) Christian Chiarcos and Janine Siewert and Tabea Gröger and Christian Fäth (2025b), Towards a Cross-Dialectal Dictionary for Low German (Low Saxon), in Proceedings of KONVENS 2025, Sep 9-12, Hildesheim, Gemany.
+	</td></tr>
 </table>
+
+- Please refer to the first paper when discussing, using or reporting about the resulting cross-dialectal dataset.
+- Please provide an additional reference to the second paper when discussing, using or reporting about our approach on cross-dialectal linking.
 
 See the [official web site](https://nds-spraakverarbeiden.github.io/linked-nds-dictionaries/) for further / more detailed information.
 
